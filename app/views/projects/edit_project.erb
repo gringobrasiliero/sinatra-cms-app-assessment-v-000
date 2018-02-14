@@ -1,0 +1,17 @@
+<h3>Edit Project</h3>
+
+	<form method="POST" action="/projects/<%=@project.id%>">
+		<input id="hidden" type="hidden" name="_method" value="PATCH">
+    Project Name: <input type="text" name="name" value="<%= @project.name %>"><br>
+    Type: <input type="text" name="type_of_p" value="<%= @project.type_of_p %>"><br>
+    Description: <input type="text" name="description" value="<%= @project.description %>"><br>
+    Link: <input type="text" name="link" value="<%= @project.link %>"><br>
+		<input type="submit" id="submit" value="Submit">
+
+	</form>
+
+  <form method="POST" action="/tweets/<%=@tweet.id%>/delete">
+    <input id="hidden" type="hidden" name="_method" value="DELETE">
+        <a>Delete Project<input type="submit" value="Delete Project" id="Delete Project"></a>
+
+  </form>
