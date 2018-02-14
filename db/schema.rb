@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180214115740) do
+ActiveRecord::Schema.define(version: 20180214134935) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "type_of_p"
     t.string "description"
     t.string "link"
     t.string "materials"

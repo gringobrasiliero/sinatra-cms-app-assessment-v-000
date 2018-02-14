@@ -1,5 +1,14 @@
 class ProjectsController < ApplicationController
 
+  get '/projects' do
+     if logged_in?
+       @user = current_user
+       @projects = Project.all
+       erb :'/projects/projects'
+     else
+       redirect to '/login'
+     end
+   end
 
   get '/projects/new' do
     if logged_in?
@@ -19,5 +28,13 @@ class ProjectsController < ApplicationController
       end
     end
 
+    get '/projects/:id' do
+       if logged_in?
+         @project = Project.find_by_id(params[:id])
+         erb :'projects/show_project'
+       else
+         redirect to '/login'
+       end
+     end
 
 end

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         if logged_in?
           redirect to "/attributes/attributes.erb"
   else
-        erb :'/users/create_user' , locals: {message: "Please sign up to sign in"}
+        erb :'/users/create_user'
     end
   end
 
