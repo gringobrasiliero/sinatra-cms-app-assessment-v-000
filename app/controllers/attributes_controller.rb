@@ -1,3 +1,3 @@
-class AttributesController < ApplicationController
+class ProjectsController < ApplicationController
 
 end
