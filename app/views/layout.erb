@@ -1,12 +1,28 @@
 <!DOCTYPE html>
 <html>
-<header>
-  <title>Magic Mirror Customizer</title>
-  		<link rel="stylesheet" type="text/css" href="/css/style.css">
-</header>
+	<head>
+		<title>Project Sharer</title>
+		<link rel="stylesheet" type="text/css" href="/css/style.css">
+	</head>
+	<body>
+		<nav>
+			<% if logged_in? %>
+			<a href="/tweets"> Home Page </a>
+			<a href="/tweets/new"> Create Project </a>.
+			<a href="/logout">Log Out</a><br>
+			Welcome, <%=current_user.username%><br>
 
-<body>
+			<%else%>
+			<a href="/signup"> Sign Up</a>
+			<a href="/login"> Sign In</a>
+
+			<div class="container">
+			<h1>Welcome to Project Share</h1>
+
+		</div>
+		<%end%>
+<%=yield%>
+		</nav>
 
 </body>
-
 </html>

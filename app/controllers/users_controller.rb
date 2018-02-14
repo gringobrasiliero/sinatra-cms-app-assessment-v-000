@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
 
-  post '/signup' do #this now passes all Signup tests
+  post '/signup' do
         if logged_in?
           redirect '/attributes/attributes.erb'
         elsif params[:username] == "" || params[:email] == "" || params[:password] == ""
