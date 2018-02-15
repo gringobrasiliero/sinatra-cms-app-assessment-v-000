@@ -22,7 +22,7 @@ class ProjectsController < ApplicationController
       if params[:name] == ""
         redirect to :'/projects/new'
       else
-        @project = Project.create(params)
+        @project = current_user.projects.create(params)
         @project.save
         redirect to "/projects/#{@project.id}"
       end

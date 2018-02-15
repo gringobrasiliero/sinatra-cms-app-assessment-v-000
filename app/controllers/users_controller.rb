@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
     get '/signup' do
         if logged_in?
-          redirect to "/attributes/attributes.erb"
+          redirect to "/projects"
   else
         erb :'/users/create_user'
     end
@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
   post '/signup' do
         if logged_in?
-          redirect '/attributes/attributes.erb'
+          redirect '/projects'
         elsif params[:username] == "" || params[:email] == "" || params[:password] == ""
       		redirect to "/signup"
         else
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
 get '/login' do
 if logged_in?
-  redirect to "/attributes/attributes.erb"
+  redirect to "/projects"
 else
   erb :'/users/login'
 end
@@ -39,7 +39,7 @@ end
         user = User.find_by(username: params[:username])
      if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-       redirect to '/attributes/attributes.erb'
+       redirect to 'projects'
      else
        redirect to '/login'
      end
@@ -50,7 +50,7 @@ end
        session.destroy
        redirect to '/login'
      else
-       redirect to '/attributes/attributes.erb'
+       redirect to 'projects'
        end
    end
 
