@@ -235,7 +235,7 @@ describe ApplicationController do
         user = User.find_by(:id=> user.id)
         user2 = User.find_by(:id => user2.id)
         project = Project.find_by(:name => "Project!!!")
-        expect(project).to be_instance_of(project)
+        expect(project).to be_instance_of(Project)
         expect(project.user_id).to eq(user.id)
         expect(project.user_id).not_to eq(user2.id)
       end

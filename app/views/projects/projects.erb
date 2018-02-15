@@ -1,0 +1,11 @@
+<body>
+
+
+<h3>Projects</h3>
+
+	<% @projects.each do |project| %>
+		<div>
+		<a href="/projects/<%=project.id%>/edit"><%= project.name %></a>
+		</div>
+	<%end%>
+</body>
