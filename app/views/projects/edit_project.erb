@@ -5,12 +5,13 @@
     Project Name: <input type="text" name="name" value="<%= @project.name %>"><br>
     Type: <input type="text" name="type_of_p" value="<%= @project.type_of_p %>"><br>
     Description: <input type="text" name="description" value="<%= @project.description %>"><br>
-    Link: <input type="text" name="link" value="<%= @project.link %>"><br>
+		Materials: <input type="text" name="materials" value="<%= @project.materials %>"><br>
+	  Link: <input type="text" name="link" value="<%= @project.link %>"><br>
 		<input type="submit" id="submit" value="Submit">
 
 	</form>
 
-  <form method="POST" action="/tweets/<%=@tweet.id%>/delete">
+  <form method="POST" action="/projects/<%=@project.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="DELETE">
         <a>Delete Project<input type="submit" value="Delete Project" id="Delete Project"></a>
 

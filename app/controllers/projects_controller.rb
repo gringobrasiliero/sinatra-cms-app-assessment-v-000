@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
     get '/projects/:id' do
        if logged_in?
          @project = Project.find_by_id(params[:id])
-         erb :'projects/show_project'
+         erb :'/projects/show_project'
        else
          redirect to '/login'
        end
@@ -51,11 +51,11 @@ class ProjectsController < ApplicationController
    end
 
    patch '/projects/:id' do
-     if params[:content] == ""
+     if params[:name] == ""
        redirect to "/projects/#{params[:id]}/edit"
      else
        @project=Project.find_by_id(params[:id])
-       @project.content = params[:content]
+       @project.name = params[:name]
        @project.save
        redirect to "/projects/#{@project.id}"
      end

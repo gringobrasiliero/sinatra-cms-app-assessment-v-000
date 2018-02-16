@@ -208,6 +208,10 @@ describe ApplicationController do
 
         visit '/projects/new'
         fill_in(:name, :with => "project!!!")
+        fill_in(:type_of_p, :with => "software")
+        fill_in(:description, :with => "Making a website with Sinatra")
+        fill_in(:link, :with => "www.projectmaker.com")
+        fill_in(:materials, :with => "computer")
         click_button 'submit'
 
         user = User.find_by(:username => "becky567")
@@ -230,11 +234,15 @@ describe ApplicationController do
         visit '/projects/new'
 
         fill_in(:name, :with => "project!!!")
+        fill_in(:type_of_p, :with => "software")
+        fill_in(:description, :with => "Making a website with Sinatra")
+        fill_in(:link, :with => "www.projectmaker.com")
+        fill_in(:materials, :with => "computer")
         click_button 'submit'
 
         user = User.find_by(:id=> user.id)
         user2 = User.find_by(:id => user2.id)
-        project = Project.find_by(:name => "Project!!!")
+        project = Project.find_by(:name => "project!!!")
         expect(project).to be_instance_of(Project)
         expect(project.user_id).to eq(user.id)
         expect(project.user_id).not_to eq(user2.id)
@@ -344,7 +352,7 @@ describe ApplicationController do
         fill_in(:name, :with => "i love projecting")
 
         click_button 'submit'
-        expect(Project.find_by(:name => "i love Projecting")).to be_instance_of(Project)
+        expect(Project.find_by(:name => "i love projecting")).to be_instance_of(Project)
         expect(Project.find_by(:name => "projecting!")).to eq(nil)
         expect(page.status_code).to eq(200)
       end
