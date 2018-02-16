@@ -37,4 +37,41 @@ class ProjectsController < ApplicationController
        end
      end
 
+     get '/projects/:id/edit' do
+     if !logged_in?
+         redirect to '/login'
+    else
+       @project = Project.find_by_id(params[:id])
+       if @project.user_id = current_user.id
+         erb :'/projects/edit_project'
+       else
+         redirect to "/projects"
+       end
+     end
+   end
+
+   patch '/projects/:id' do
+     if params[:content] == ""
+       redirect to "/projects/#{params[:id]}/edit"
+     else
+       @project=Project.find_by_id(params[:id])
+       @project.content = params[:content]
+       @project.save
+       redirect to "/projects/#{@project.id}"
+     end
+   end
+
+   delete '/projects/:id/delete' do
+        if logged_in?
+          @project = Project.find_by_id(params[:id])
+          if @project.user_id == current_user.id
+            @project.destroy
+            redirect to '/projects'
+        else
+            redirect to '/login'
+          end
+        end
+      end
+
+
 end
