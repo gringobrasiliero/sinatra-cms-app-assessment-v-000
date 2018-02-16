@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
          redirect to '/login'
     else
        @project = Project.find_by_id(params[:id])
-       if @project.user_id = current_user.id
+       if @project.user_id == current_user.id
          erb :'/projects/edit_project'
        else
          redirect to "/projects"
