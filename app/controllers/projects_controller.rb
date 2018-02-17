@@ -22,11 +22,12 @@ class ProjectsController < ApplicationController
       if params[:name] == ""
         redirect to :'/projects/new'
       else
-        @project = current_user.projects.create(name: params[:name])
+        @project = current_user.projects.create(name: params[:name], type_of_p: params[:type_of_p], description: params[:description], materials: params[:materials], link: params[:link])
         #@project.save
         redirect to "/projects/#{@project.id}"
       end
     end
+
 
     get '/projects/:id' do
        if logged_in?
