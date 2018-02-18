@@ -5,13 +5,17 @@
 
 	<% @projects.each do |project| %>
 		<div>
+			<% if project.user_id == current_user.id%>
 		<h2><a href="/projects/<%=project.id%>/edit"><%= project.name %></a></h3>
+			<%else%>
+			<h2><%= project.name %></h3>
+			<%end%>
 		<h3> Type of Project: <%= project.type_of_p %> </h3>
 		<h3> Project Description:	<%= project.description %> </h3>
 		<h3> Project Link:	<%= project.link %> </h3>
 		<h3> Project Materials:	<%= project.materials %> </h3>
 
-			
+
 
 		</div>
 	<%end%>
