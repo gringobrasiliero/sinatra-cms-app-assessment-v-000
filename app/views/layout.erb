@@ -9,9 +9,10 @@
 			<% if logged_in? %>
 			<a href="/projects"> Home Page </a>
 			<a href="/"> My Projects </a>
-			<a href="/projects/new"> Create Project </a>.
+			<a href="/projects/new"> Create Project </a>
 			<a href="/logout">Log Out</a><br>
-			Welcome, <%=current_user.username%><br>
+
+			<h1>Welcome, <%=current_user.username%></h1><br>
 
 			<%else%>
 			<a href="/signup"> Sign Up</a>
