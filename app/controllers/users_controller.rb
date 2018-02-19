@@ -18,8 +18,9 @@ class UsersController < ApplicationController
   post '/signup' do
         if logged_in?
           redirect '/projects'
-        elsif params[:username] == "" || params[:email] == "" || params[:password] == ""
+        elsif params[:username] == "a" || params[:email] == "a" || params[:password] == "a"
       		redirect to "/signup"
+
         else
         		@user = User.create(params)
             @user.save
