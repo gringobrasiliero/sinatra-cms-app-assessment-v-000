@@ -1,5 +1,6 @@
+require 'rack-flash'
 class UsersController < ApplicationController
-
+use Rack::Flash
   get '/users/:slug' do
       @user = User.find_by_slug(params[:slug])
       @projects = Project.all
@@ -18,7 +19,7 @@ class UsersController < ApplicationController
   post '/signup' do
         if logged_in?
           redirect '/projects'
-        elsif params[:username] == "a" || params[:email] == "a" || params[:password] == "a"
+        elsif params[:username].empty? || params[:email].empty? || params[:password].empty?
       		redirect to "/signup"
 
         else
