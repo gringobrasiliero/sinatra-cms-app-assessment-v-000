@@ -20,7 +20,8 @@ use Rack::Flash
         if logged_in?
           redirect '/projects'
         elsif params[:username].empty? || params[:email].empty? || params[:password].empty?
-      		redirect to "/signup"
+flash[:message] = "You need to have a username, email, and password. Try again."
+          redirect to "/signup"
 
         else
         		@user = User.create(params)

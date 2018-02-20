@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   #validates :password, length: {in: 8..20 }
   #validates :email, uniqueness: { message: "We already have this email address linked to an Account."}
 
-  validates :username, uniqueness: true
+  #validates :username, uniqueness: true
 
 
 has_secure_password
