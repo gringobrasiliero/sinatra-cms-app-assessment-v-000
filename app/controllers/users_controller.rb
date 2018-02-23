@@ -11,23 +11,23 @@ use Rack::Flash
         if logged_in?
           redirect to "/projects"
   else
-        erb :'/users/create_user' , locals: {message: "Please sign up to sign in"}
+        erb :'/users/create_user'
     end
   end
 
 
   post '/signup' do
         if logged_in?
-          redirect '/projects'
+          redirect to '/projects'
         elsif params[:username].empty? || params[:email].empty? || params[:password].empty?
 flash[:message] = "You need to have a username, email, and password. Try again."
-          redirect to "/signup"
+          redirect to '/signup'
 
         else
         		@user = User.create(params)
             @user.save
         		session[:user_id] = @user.id
-            redirect '/projects'
+            redirect to '/projects'
       	end
     	end
 
