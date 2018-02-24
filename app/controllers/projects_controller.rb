@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
         redirect to :'/projects/new'
       else
         @project = current_user.projects.create(name: params[:name], type_of_p: params[:type_of_p], description: params[:description], materials: params[:materials], link: params[:link])
-        #@project.save
+        @project.save
         redirect to "/projects/#{@project.id}"
       end
     end
@@ -57,10 +57,15 @@ class ProjectsController < ApplicationController
      else
        @project=Project.find_by_id(params[:id])
        @project.name = params[:name]
+       @project.type_of_p = params[:type_of_p]
+       @project.description = params[:description]
+       @project.materials = params[:materials]
+       @project.link = params[:link]
        @project.save
        redirect to "/projects/#{@project.id}"
      end
    end
+
 
    delete '/projects/:id/delete' do
         if logged_in?

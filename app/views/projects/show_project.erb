@@ -4,7 +4,7 @@
 
 <h3> Type of Project: <%= @project.type_of_p %> </h3>
 <h3> Project Description:	<%= @project.description %> </h3>
-<h3> Project Link:	<%= @project.link %> </h3>
+<h3> Project Link:	<a href="<%= @project.link %>"><%= @project.link %></a> </h3>
 <h3> Project Materials:	<%= @project.materials %> </h3>
 
 <h4><a href="/projects/<%=@project.id%>/edit">Edit project</a></h4>
