@@ -54,9 +54,7 @@ end
      if logged_in?
        session.destroy
        redirect to '/login'
-     else
-       redirect to 'projects'
-       end
+         end
    end
 
 
