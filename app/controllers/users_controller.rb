@@ -9,6 +9,7 @@ use Rack::Flash
     end
 
     get '/signup' do
+      @owner = "Nolan"
         if logged_in?
           redirect to "/projects"
   else
@@ -26,7 +27,6 @@ flash[:message] = "You need to have a username, email, and password. Try again."
 
         else
         		@user = User.create(params)
-            @user.save
         		session[:user_id] = @user.id
             redirect to '/projects'
       	end

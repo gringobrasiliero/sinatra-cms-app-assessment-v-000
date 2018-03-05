@@ -31,9 +31,11 @@ class ProjectsController < ApplicationController
 
 
     get '/projects/:id' do
-       if logged_in? #Requires user to be logged in to view projects
-         @project = Project.find_by_id(params[:id])
-         erb :'/projects/show_project'
+      @project = Project.find_by_id(params[:id])
+
+       if logged_in? && @project.user_id == current_user.id#Requires user to be logged in to view projects
+                  erb :'/projects/show_project'
+
        else #if not logged in, redirects to login page
          redirect to '/login'
        end
@@ -53,10 +55,11 @@ class ProjectsController < ApplicationController
    end
 
    patch '/projects/:id' do
-     if params[:name] == "" #Makes sure user can not delete the name of the project.
+     @project=Project.find_by_id(params[:id])
+     if params[:name] == ""  && @project.user_id == current_user.id #Makes sure user can not delete the name of the project.
        redirect to "/projects/#{params[:id]}/edit"
      else
-       @project=Project.find_by_id(params[:id])
+      # @project.update(params[:project])
        @project.name = params[:name]
        @project.type_of_p = params[:type_of_p]
        @project.description = params[:description]
